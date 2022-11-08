@@ -19,7 +19,7 @@ public class TaskService {
         List<Task> resultList = new ArrayList<>();
         for (Map.Entry<Integer, Task> integerTaskEntry : map.entrySet()) {
             var task = integerTaskEntry.getValue();
-            if (task.Accessible(inputDate)) {
+            if (task.accessible(inputDate)) {
                 resultList.add(task);
             }
         }

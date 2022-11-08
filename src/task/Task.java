@@ -53,7 +53,7 @@ public class Task implements Repeatable {
 
 
     @Override
-    public boolean Accessible(LocalDate inputDate) {
+    public boolean accessible(LocalDate inputDate) {
         return inputDate.isEqual(getStartDate().toLocalDate());
     }
 

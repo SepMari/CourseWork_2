@@ -10,7 +10,7 @@ public class DayTask extends Task {
     }
 
     @Override
-    public boolean Accessible(LocalDate inputDate) {
+    public boolean accessible(LocalDate inputDate) {
         var startDay = getStartDate().toLocalDate();
         while (!startDay.isAfter(inputDate)) {
             if (startDay.equals(inputDate)) {
