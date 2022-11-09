@@ -17,13 +17,13 @@ public class Main {
                     int menu = scanner.nextInt();
                     switch (menu) {
                         case 1:
-                            inputTask(taskSetting, scanner);
+                            inputTask(taskService, scanner);
                             break;
                         case 2:
-                            removeTask(taskSetting, scanner);
+                            removeTask(taskService, scanner);
                             break;
                         case 3:
-                            getAllDateTask(taskSetting, scanner);
+                            getAllDateTask(taskService, scanner);
                             break;
                         case 0:
                             break label;
@@ -36,7 +36,7 @@ public class Main {
         }
     }
 
-    private static TaskService taskSetting = new TaskService();
+    private static TaskService taskService = new TaskService();
 
     private static Task inputTask(TaskService taskSetting, Scanner scanner) {
         System.out.print("Введите название задачи: ");
@@ -67,19 +67,19 @@ public class Main {
 
         switch (typeTask){
             case 0:
-                taskSetting.addTask(new Task(taskName, taskDescription, typeTask1, resulDate));
+                taskService.addTask(new Task(taskName, taskDescription, typeTask1, resulDate));
                 break;
             case 1:
-                taskSetting.addTask(new DayTask(taskName, taskDescription, typeTask1, resulDate));
+                taskService.addTask(new DayTask(taskName, taskDescription, typeTask1, resulDate));
                 break;
             case 2:
-                taskSetting.addTask(new WeekTask(taskName, taskDescription, typeTask1, resulDate));
+                taskService.addTask(new WeekTask(taskName, taskDescription, typeTask1, resulDate));
                 break;
             case 3:
-                taskSetting.addTask(new MonthTask(taskName, taskDescription, typeTask1, resulDate));
+                taskService.addTask(new MonthTask(taskName, taskDescription, typeTask1, resulDate));
                 break;
             case 4:
-                taskSetting.addTask(new YearTask(taskName, taskDescription, typeTask1, resulDate));
+                taskService.addTask(new YearTask(taskName, taskDescription, typeTask1, resulDate));
                 break;
             default:
                 throw new RuntimeException("Нет такого формата задачи!");
@@ -87,19 +87,21 @@ public class Main {
         return null;
     }
 
-    private static void removeTask(TaskService taskSetting, Scanner scanner) {
+
+    private static void removeTask(TaskService taskService, Scanner scanner) {
+        taskService.getAllTask();
         System.out.println("Введите id задачи, которую нужно удалить: ");
         int id = scanner.nextInt();
-        taskSetting.remove(id);
+        taskService.remove(id);
     }
 
-    private static void getAllDateTask(TaskService taskSetting, Scanner scanner) {
+    private static void getAllDateTask(TaskService taskService, Scanner scanner) {
         System.out.print("Введите дату задачи в формате дд.мм.гггг: ");
         scanner.nextLine();
         String date = scanner.nextLine();
         LocalDate taskDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 
-        var allDateTask = taskSetting.getAllDate(taskDate);
+        var allDateTask = taskService.getAllDate(taskDate);
         System.out.println("Список задач на день: ");
         for (Task task : allDateTask) {
             System.out.println(task);

@@ -2,6 +2,7 @@ package task;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.stream.Stream;
 
 public class Task implements Repeatable {
     private static int idGenerator = 0;

@@ -2,6 +2,7 @@ package task;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class TaskService {
     private Map<Integer, Task> map = new HashMap<>();
@@ -12,6 +13,12 @@ public class TaskService {
 
     public void remove(int id) {
         map.remove(id);
+    }
+
+    public void getAllTask() {
+        for (Map.Entry<Integer, Task> allTask : map.entrySet()) {
+            System.out.println(allTask);
+        }
     }
 
     public Collection<Task> getAllDate(LocalDate inputDate) {
