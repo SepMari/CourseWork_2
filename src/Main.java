@@ -38,7 +38,7 @@ public class Main {
 
     private static TaskService taskSetting = new TaskService();
 
-    private static void inputTask(TaskService taskSetting, Scanner scanner) {
+    private static Task inputTask(TaskService taskSetting, Scanner scanner) {
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
         scanner.nextLine();
@@ -84,6 +84,7 @@ public class Main {
             default:
                 throw new RuntimeException("Нет такого формата задачи!");
         }
+        return null;
     }
 
     private static void removeTask(TaskService taskSetting, Scanner scanner) {

@@ -5,7 +5,6 @@ import java.util.*;
 
 public class TaskService {
     private Map<Integer, Task> map = new HashMap<>();
-    private Collection<Task> removedTask;
 
     public void addTask(Task task) {
         map.put(task.getId(), task);

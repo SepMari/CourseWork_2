@@ -19,6 +19,7 @@ public class Task implements Repeatable {
         this.startDate = resultDate;
     }
 
+
     public LocalDateTime getStartDate() {
         return startDate;
     }
@@ -59,11 +60,10 @@ public class Task implements Repeatable {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", startDate=" + startDate +
-                ", typeTask=" + typeTask +
-                '}';
+        return
+                "Название задачи: " + name +
+                ", Описание задачи: " + description +
+                ", Время начала задачи: " + startDate.getHour() + ':' + startDate.getMinute() +
+                ", тип задачи: " + typeTask.getName() + '\n';
     }
 }
